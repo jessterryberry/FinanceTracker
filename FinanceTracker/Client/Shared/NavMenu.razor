@@ -1,0 +1,49 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand row text-center align-content-center" style="height:80px" href="">
+        <img src="images/logotext.png" alt="Logo" height="80" width="240" />
+    </a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass nav-menu" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3" style="height:200px;">
+            <div class="nav-link">
+                <img src="/images/ProfilePic.png" alt="Profile Picture" style="height:160px; width:160px" />
+            </div>
+        </li>
+        <li>
+            <div class="nav-link justify-content-center text-center" style="color:white">
+                <span aria-hidden="true"></span> Jessica Terryberry
+            </div>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="earnings">
+                <span class="oi oi-briefcase" aria-hidden="true"></span> Earnings
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="expenses">
+                <span class="oi oi-dollar" aria-hidden="true"></span> Expenses
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

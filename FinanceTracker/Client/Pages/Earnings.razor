@@ -1,0 +1,99 @@
+﻿@page "/earnings"
+@using FinanceTracker.Client.Components;
+@using FinanceTracker.Shared;
+@using System.Globalization;
+@inject HttpClient Http;
+
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                Earnings
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Subject</th>
+                            <th>Amount</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (earnings == null)
+                        {
+                            <tr><td><em>Loading...</em></td></tr>
+                        }
+                        else
+                        {
+                            @foreach (var earning in earnings)
+                            {
+                                <tr>
+                                    <td>@earning.Date.ToShortDateString()</td>
+                                    <td>@earning.Category</td>
+                                    <td>@earning.Subject</td>
+                                    <td>@earning.Amount.ToString("C2", CultureInfo.CreateSpecificCulture("en-CA"))</td>
+                                    <td><button type="button" class="btn btn-danger btn-sm" @onclick="() => OpenDeleteDialog(earning)">Delete</button></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <EarningForm OnSubmitCallback="@Refresh"></EarningForm>
+    </div>
+</div>
+<div>&nbsp;</div>
+@if (DeleteDialogOpen)
+{
+    <ModalDialog Title="Are you sure?"
+                 Text="Do you want to delete this entry?"
+                 OnClose="@OnDeleteDialogClose"
+                 DialogType="ModalDialog.ModalDialogType.DeleteCancel">
+    </ModalDialog>
+}
+
+@code {
+    private Earning[] earnings;
+    private Earning _earningToDelete;
+    public bool DeleteDialogOpen { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        earnings = await Http.GetFromJsonAsync<Earning[]>("api/Earnings");
+        StateHasChanged();
+    }
+
+    public async void Refresh()
+    {
+        await LoadData();
+    }
+
+    private async Task OnDeleteDialogClose(bool accepted)
+    {
+        if (accepted)
+        {
+            await Http.DeleteAsync($"api/Earnings/{_earningToDelete.Id}");
+            await LoadData();
+            _earningToDelete = null;
+        }
+        DeleteDialogOpen = false;
+    }
+
+    private void OpenDeleteDialog(Earning earning)
+    {
+        _earningToDelete = earning;
+        DeleteDialogOpen = true;
+    }
+}

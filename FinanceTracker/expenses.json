@@ -1,0 +1,107 @@
+[
+  {
+    "Id": "7b4b351c-6cbc-4a51-a6f8-2f0970ae13f0",
+    "Date": "2022-02-25T00:00:00",
+    "Subject": "Monthly Mortgage",
+    "Category": 0,
+    "Amount": 2500.0
+  },
+  {
+    "Id": "1e7efcc9-cee7-4441-a9f4-3b3f25965c9a",
+    "Date": "2022-02-12T00:00:00",
+    "Subject": "Electricity",
+    "Category": 2,
+    "Amount": 77.80
+  },
+  {
+    "Id": "526654ee-48f2-4b7a-b135-ba43b34bf6cc",
+    "Date": "2022-03-25T00:00:00",
+    "Subject": "Cell Phone",
+    "Category": 2,
+    "Amount": 126.31
+  },
+  {
+    "Id": "d8484a20-f90b-4ef8-b0e2-6abd03d23aa4",
+    "Date": "2022-03-12T00:00:00",
+    "Subject": "Car/Homeowner Insurance",
+    "Category": 5,
+    "Amount": 157.0
+  },
+  {
+    "Id": "67cc3701-bff5-4eeb-804a-7e12fb173836",
+    "Date": "2022-03-04T00:00:00",
+    "Subject": "Credit Card Bill",
+    "Category": 2,
+    "Amount": 145.0
+  },
+  {
+    "Id": "97286de6-3037-4a0b-8279-36810bb72ccd",
+    "Date": "2022-04-25T00:00:00",
+    "Subject": "Internet/TV",
+    "Category": 2,
+    "Amount": 201.13
+  },
+  {
+    "Id": "99790395-f0ad-4f34-bc42-2eebdf50de86",
+    "Date": "2022-04-14T00:00:00",
+    "Subject": "Monthly Laundry",
+    "Category": 9,
+    "Amount": 50.0
+  },
+  {
+    "Id": "dd886de8-5e4a-4f61-8c66-57deedaa28d7",
+    "Date": "2022-04-28T00:00:00",
+    "Subject": "Groceries",
+    "Category": 6,
+    "Amount": 125.0
+  },
+  {
+    "Id": "95faa897-9c42-4234-baff-602537183699",
+    "Date": "2022-04-12T00:00:00",
+    "Subject": "Medication",
+    "Category": 8,
+    "Amount": 43.72
+  },
+  {
+    "Id": "41ae535e-7df7-478f-a497-92eca189e98b",
+    "Date": "2022-04-19T00:00:00",
+    "Subject": "Donation",
+    "Category": 12,
+    "Amount": 15.0
+  },
+  {
+    "Id": "cfc93227-3d07-41d5-86e6-7bf7fe70c932",
+    "Date": "2022-04-04T00:00:00",
+    "Subject": "Gas",
+    "Category": 4,
+    "Amount": 50.45
+  },
+  {
+    "Id": "7029f825-429c-4380-90da-0ac1e0ae936c",
+    "Date": "2022-04-29T00:00:00",
+    "Subject": "Video Games",
+    "Category": 7,
+    "Amount": 25.99
+  },
+  {
+    "Id": "3a342dc9-fd5a-4f2c-8a96-fc7dd282811d",
+    "Date": "2022-04-17T00:00:00",
+    "Subject": "Hair Cut",
+    "Category": 11,
+    "Amount": 34.92
+  },
+  {
+    "Id": "d29625e8-e4a5-4280-adb9-296e9240708e",
+    "Date": "2022-04-17T00:00:00-04:00",
+    "Subject": "Electricity",
+    "Category": 2,
+    "Amount": 77.84
+  },
+  {
+    "Id": "0f84c8ed-5d75-4e0a-ae50-4c24002bcf6a",
+    "Date": "2022-04-11T00:00:00",
+    "Subject": "Phone Bill",
+    "Category": 2,
+    "Amount": 126.31
+  }
+]

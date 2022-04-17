@@ -1,0 +1,41 @@
+﻿@using FinanceTracker.Client.Services;
+
+<div class="col-4 text-center justify-content-center">
+    <div style="margin-top: 15px; margin-right: 30px; text-align: center;">
+        <RadzenCard class="m-3">
+            <div>
+                <div>
+                    <div class="row text-center justify-content-center" style="font-size:x-large; color:@Color">
+                        <b>$ @Data.Amount</b>
+                    </div>
+                    <div class="row text-center justify-content-center">
+                        <b>@Data.Label</b>
+                    </div>
+                </div>
+            </div>
+        </RadzenCard>
+    </div>
+</div>
+
+@code {
+        [Parameter]
+        public SummaryData Data { get; set; }
+
+    private string Color;
+
+    protected override async Task OnInitializedAsync()
+    {
+        switch (Data.Label)
+        {
+            case "Income":
+                Color = "#00b140";
+                break;
+            case "Expenses":
+                Color = "#FA8072";
+                break;
+            case "Balance":
+                Color = "#4682B4";
+                break;
+        }
+    }
+}

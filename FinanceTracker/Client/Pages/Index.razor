@@ -1,0 +1,113 @@
+﻿@page "/"
+@using System.Globalization;
+@using FinanceTracker.Client.Services;
+@using FinanceTracker.Client.Components;
+@using Radzen;
+@using Radzen.Blazor;
+@using FinanceTracker.Shared;
+@inject HttpClient Http;
+@inject IDataService _dataService;
+
+<div class="row">
+    <div class="col-lg-12">
+        <div>
+            <div class="row text-center justify-content-center">
+                <SummaryCard Data="@summaryEarning"></SummaryCard>
+                <SummaryCard Data="@summaryExpense"></SummaryCard>
+                <SummaryCard Data="@summaryBalance"></SummaryCard>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                @currentYear - Earnings and Expenses
+            </div>
+            <div class="card-body text-center justify-content-center">
+                <RadzenChart>
+                    <RadzenColumnSeries Fill="#AACDBE" Data="@yearlyEarnings" CategoryProperty="Month" ValueProperty="Amount" Title="Earnings" LineType="LineType.Dashed" />
+                    <RadzenColumnSeries Fill="#EA907A" Data="@yearlyExpenses" CategoryProperty="Month" ValueProperty="Amount" Title="Expenses" LineType="LineType.Dashed" />
+                    <RadzenColumnOptions Radius="5" />
+                    <RadzenValueAxis Formatter="@FormatAsUSD">
+                        <RadzenGridLines Visible="true" />
+                        <RadzenAxisTitle Text="Amount in CAD" />
+                    </RadzenValueAxis>
+                </RadzenChart>
+            </div>
+        </div>
+    </div>
+</div>
+@if (earnings != null)
+{
+    <div class="row mt-4">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    Earnings - Last 3 Months
+                </div>
+                <div class="card-body">
+                    <div style="display: flex" class="text-center justify-content-center">
+                        <DonutChart Colors="@colors" Data="@earnings.CurrentMonth" />
+                        <DonutChart Colors="@colors" Data="@earnings.LastMonth" />
+                        <DonutChart Colors="@colors" Data="@earnings.PreviousMonth" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@if (expenses != null)
+{
+    <div class="row mt-4">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    Expenses - Last 3 Months
+                </div>
+                <div class="card-body">
+                    <div style="display: flex" class="text-center justify-content-center">
+                        <DonutChart Colors="@colors" Data="@expenses.CurrentMonth" />
+                        <DonutChart Colors="@colors" Data="@expenses.LastMonth" />
+                        <DonutChart Colors="@colors" Data="@expenses.PreviousMonth" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private static int currentYear = DateTime.Today.Year;
+    private ICollection<string> colors = new List<string>() {  "#e78166", "#cf5f3b", "#51f0e8", "#95fed0", "#bbee9e", "#e0de6d", "#06acf1", "#0ce3ff", "#f0c17f",
+    "#ffa391", "#0075e2", "#2153E7", "#CE4935"};
+
+
+    private ICollection<YearlyItem> yearlyExpenses;
+    private ICollection<YearlyItem> yearlyEarnings;
+    private ThreeMonthsData earnings;
+    private ThreeMonthsData expenses;
+    private SummaryData summaryEarning = new SummaryData { Amount = 0.0M, Label = "Income" };
+    private SummaryData summaryExpense = new SummaryData { Amount = 0.0M, Label = "Expenses" };
+    private SummaryData summaryBalance = new SummaryData { Amount = 0.0M, Label = "Balance" };
+
+    string FormatAsUSD(object value)
+    {
+        return ((double)value).ToString("C0", CultureInfo.CreateSpecificCulture("en-US"));
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        earnings = await _dataService.LoadLast3MonthsEarnings();
+        expenses = await _dataService.LoadLast3MonthsExpenses();
+        yearlyExpenses = await _dataService.LoadCurrentYearExpenses();
+        yearlyEarnings = await _dataService.LoadCurrentYearEarnings();
+        summaryEarning = await _dataService.LoadTotalEarnings();
+        summaryExpense = await _dataService.LoadTotalExpenses();
+        summaryBalance = await _dataService.CalculateBalance();
+
+        StateHasChanged();
+    }
+}

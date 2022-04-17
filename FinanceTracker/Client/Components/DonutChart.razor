@@ -1,0 +1,25 @@
+﻿@using FinanceTracker.Client.Services;
+
+<div class="px-5">
+    <div style="margin-top: 15px; margin-right: 90px; text-align: center;"><b>@Data.Label</b></div>
+    <RadzenChart>
+        <RadzenDonutSeries Data="@Data.Data" CategoryProperty="Category" ValueProperty="Amount" Fills="@Colors" Title="@Data.Label">
+            <TitleTemplate>
+                <div class="rz-donut-content">
+                    <div>@Data.Label</div>
+                </div>
+            </TitleTemplate>
+        </RadzenDonutSeries>
+    </RadzenChart>
+</div>
+
+@code {
+    [Parameter]
+    public ICollection<string> Colors { get; set; }
+
+    [Parameter]
+    public MonthlyData Data { get; set; }
+
+    [Parameter]
+    public string Label { get; set; }
+}

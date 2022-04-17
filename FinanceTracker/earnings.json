@@ -1,0 +1,72 @@
+[
+  {
+    "Id": "fd117ebf-fcec-491f-9beb-d212510ec68f",
+    "Date": "2022-02-25T00:00:00",
+    "Subject": "Monthly Salary",
+    "Category": 0,
+    "Amount": 2480.0
+  },
+  {
+    "Id": "42130336-2a07-47ec-bb1f-96065e1a6bb1",
+    "Date": "2022-02-12T00:00:00",
+    "Subject": "Freelancing Client A",
+    "Category": 2,
+    "Amount": 440.0
+  },
+  {
+    "Id": "49245622-5b71-4cfa-99e2-23f3ee4a853e",
+    "Date": "2022-03-25T00:00:00",
+    "Subject": "Monthly Salary",
+    "Category": 0,
+    "Amount": 2480.0
+  },
+  {
+    "Id": "46ef1b21-e877-4f89-bc32-87f588948e48",
+    "Date": "2022-03-12T00:00:00",
+    "Subject": "Freelancing Client A",
+    "Category": 2,
+    "Amount": 790.0
+  },
+  {
+    "Id": "81a589a6-7635-4587-b84a-7e7df7aebe07",
+    "Date": "2022-03-04T00:00:00",
+    "Subject": "ETF Dividends",
+    "Category": 1,
+    "Amount": 387.0
+  },
+  {
+    "Id": "aec88f04-5d97-43dd-8491-5233f0c9ec84",
+    "Date": "2022-04-25T00:00:00",
+    "Subject": "Monthly Salary",
+    "Category": 0,
+    "Amount": 2480.0
+  },
+  {
+    "Id": "9402208d-c67b-49ab-901e-e5befc4c16ce",
+    "Date": "2022-04-14T00:00:00",
+    "Subject": "Freelancing Client A",
+    "Category": 2,
+    "Amount": 680.0
+  },
+  {
+    "Id": "cbfcd62c-4a85-40da-88d0-4cfdeb139d06",
+    "Date": "2022-04-12T00:00:00",
+    "Subject": "Old TV",
+    "Category": 3,
+    "Amount": 245.0
+  },
+  {
+    "Id": "a287eb52-8c20-431b-8e7d-a49175a34211",
+    "Date": "2022-04-17T00:00:00-04:00",
+    "Subject": "Couch Sale",
+    "Category": 3,
+    "Amount": 150.0
+  },
+  {
+    "Id": "3fb37b4a-5ffc-40f2-b9f6-d64958cc327a",
+    "Date": "2022-04-17T00:00:00-04:00",
+    "Subject": "Book Sale",
+    "Category": 3,
+    "Amount": 25.76
+  }
+]
